@@ -371,3 +371,159 @@ git merge-base master new_feature
 * no additional merge commit
 * destructive: SHA changes, commits are rewritten
 
+* no longer a complete record of what happened and when 
+* tricky to undo
+
+
+
+#### how to choose
+
+* **merge** to allow commits to stand out or to be clearly grouped
+
+* **merge** to bring large topic branches back into master
+
+* **rebase** to add minor commits in master to a topic branch
+
+* **rebase** to move commits from one branch to another
+
+  
+
+:exclamation: Merge anytime the topic branch is already public and being used by others]
+
+
+
+
+
+### resolve rebase conflicts
+
+```sh
+git rebase --continue
+
+git rebase --skip
+
+git rebase --abort
+
+
+```
+
+
+
+#### rebase onto other branches
+
+```sh
+git rebase --onto newbase upstream branch
+git rebase --onto master ecommerce new_feature
+```
+
+<img src="assets/rebase-other-branche.jpg" alt="rebase-other-branche" style="zoom: 33%;" />
+
+
+
+```sh
+$ git rebase --onto master camping expenses
+```
+
+
+
+<img src="assets/rebase-other-branche-2.jpg" alt="rebase-other-branche-2" style="zoom: 33%;" />
+
+#### undo a rebase
+
+* can undo simple rebases
+* rebase is destructive
+* SHAs, commit messages, change sets, and more
+* undoing complex rebases may lose data
+
+
+
+```sh
+git reset --hard ORIG_HEAD
+```
+
+
+
+#### Interactive Rebasing
+
+<img src="assets/inter-rebaseing-1.jpg" alt="inter-rebaseing-1" style="zoom:33%;" />
+
+
+
+* pick drop
+* reword edit
+* squash, fixup
+* exec
+
+#### Squash commits
+
+* fold two or more commits into one
+* squash: combine change sets, concatenate messages
+* fixup: combine change sets, discard this message
+* Uses first author in the commit series
+
+```sh
+# rebase last 3 commits onto the same branch
+# but with the opportunity to modify them
+git rebase -i HEAD~3
+
+```
+
+#### Pull rebase
+
+```sh
+git pull
+# equal 
+git fetch
+git rebase
+```
+
+<img src="assets/git-pull-1.jpg" alt="git-pull-1" style="zoom:33%;" />
+
+
+
+```sh
+git pull --rebase
+git pull -r
+```
+
+<img src="assets/git-pull-2.jpg" alt="git-pull-2" style="zoom:33%;" />
+
+
+
+```sh
+
+```
+
+### Blame
+
+
+
+```sh
+# Annotate file with commit details
+git blame filename.txt
+
+# Ignore whitespace
+git blame -w filename.txt
+
+# Annotate line 100-150
+git blame -L 100,150 filename.txt
+
+# Annotate lines 100-105
+git blame -L 100,+5 filename.txt
+```
+
+
+
+### Bisect
+
+* Find the commit that introduced a bug or regression
+* Mark last good revision and first bad revision
+* reset code to mid-point
+
+
+
+
+
+```sh
+
+```
+
