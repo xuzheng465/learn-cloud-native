@@ -12,7 +12,7 @@ MAC Address Length
 
 ### Ethernet Frame Format
 
-<img src="assets/image-20220905230053870.png" alt="image-20220905230053870" width="700px" />
+<img src="assets/image-20220905230053870.png" alt="image-20220905230053870" width="700px" center/>
 
 
 
