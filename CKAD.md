@@ -985,17 +985,94 @@ k set env deploy lab11deploy --from=secret/lab11secret
 
 ```sh
 $ kubectl api-resources
+
+$ kubectl api-versions
+
+$ kubectl explain --recursive deploy | less
+
+
 ```
 
 
 
+### Authentication & Authorization
+
+
+
+<img src="assets/authentication.jpg" alt="authentication" style="zoom:50%;" />
 
 
 
 
 
+<img src="assets/authorization.jpg" alt="authorization" style="zoom:50%;" />
+
+RBAC
+
+* RBAC is used to provide access to API resources
+
+* In RBAC, 3 elements are used
+
+  * The Role defines access permissions to specific resources
+  * The user or ServiceAccount is used as an entity in Kubernetes to work with the API
+  * The RoleBinding connects a user or `ServiceAccount` to s specific Role
+
+  
 
 
+
+```sh
+$ kubectl auth can-i get pods
+$ kubectl auth can-i get pods --as bob@example.com
+
+k config view
+less ~/.kube/config
+```
+
+
+
+###  API Access and Service Accounts
+
+* **Service Accounts** are used for basic authentication from within the Kubernetes cluster
+* **RBAC** is used to connect a **ServiceAccount** to a specific **Role**
+* Every **Pod** uses the **Default ServiceAccount** to contact the API server
+* This Default ServiceAccount allows a resource to get information from the API server, but not much else
+* Each ServiceAccount uses a secret to automount API credentials
+
+
+
+ServiceAccounts come with a secret, and the secret contains API credentials, 
+
+and by specifying the service account to be used by a Pod, the service account secret is auto-mounted to provide API access credentials according to the ServiceAccount RBAC
+
+```sh
+$ k get pods -o yaml | grep serviceAccount
+$ k get sa default -o yaml
+$ k get secret default-token-xxx
+$ k get pods -o yaml | grep -A 20 volumes
+$ k get pods -o yaml | grep -A 4 mount
+```
+
+
+
+### Lab
+
+```sh
+kubectl create sa lab12sa
+kubectl get sa
+
+kubectl run --help
+
+kubectl run busysa --image=busybox -o yaml --dry-run=client -- sleep 3600 > busysa.yaml
+
+kubectl explain pod.spec | less
+```
+
+
+
+## Lesson 13 Deploying Applications the DevOps Way
+
+![image-20220906172738191](assets/image-20220906172738191.png)
 
 
 
