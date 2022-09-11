@@ -1,3 +1,5 @@
+## Projects
+
 Some projects I use for inspiration:
 
 - https://github.com/pkg/errors - errors with stack traces
@@ -20,4 +22,10 @@ Some projects I use for inspiration:
 https://www.freecodecamp.org/news/learn-go-by-building-11-projects/
 
 
+
+192.168.0.5
+
+## net/http 标准库怎么学
+
+库函数 --》 结构定义 --〉结构函数
 
