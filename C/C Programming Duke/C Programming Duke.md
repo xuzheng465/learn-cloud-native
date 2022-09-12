@@ -54,7 +54,7 @@ $ gcc -o hello -Wall -Werror -pedantic -std=gnu99 hello.c
 
 how to use man page
 
-
+search keyword
 
 ```sh
 $ man -k keyword
@@ -67,6 +67,77 @@ $ diff -y 1.txt 2.txt
 
 
 ```
+
+
+
+## make
+
+```makefile
+SRCS=$(wildcard *.c)
+OBJS=$(patsubst %.c,%.o, $(SRCS))
+CFLAGS=-Wall -Werror -pedantic -std=gnu99
+
+myprogram: $(OBJS)
+	gcc -o myprogram $(OBJS)
+
+%.o: %.c
+	gcc -c $(CFLAGS) $<
+	
+	
+.PHONY: clean
+clean:
+	rm myprogram *.o *~
+```
+
+`.PHONY: clean` tells **make** that **clean** is a phony target
+
+percent-sign （`%`） generic rules lets us specify that we want to be able to build `sth.o` from `sth.c` 
+
+`$<` set the name of the first prerequisite of the rule (in this case, the name of the .c file)
+
+
+
+```makefile
+# This fixes the problem
+CFLAGS=-std=gnu99 -pedantic -Wal;
+
+myProgram: oneFile.o anotherFile.o
+    gcc -o myProgram oneFile.o anotherFile.o
+
+%.o: %.c
+    gcc $(CFLAGS) -c $<
+    
+.PHONY: clean
+clean:
+    rm -f myProgram *.o *.c~ *.h~
+
+oneFile.o: oneHeader.h someHeader.h
+anotherFile.o: anotherHeader.h someHeader.h
+```
+
+`$@` is a special variable which is the name of the current target
+
+
+
+`$(functionName arg1, arg2, arg3)`
+
+```makefile
+$(wildcard pattern) # generate the list of .c files in the current directory
+
+$(patsubst pattern, replacement, text) # replace the .c ending with .o endings
+OBJS=$(patsubst %.c,%.o,$(SRCS))
+
+```
+
+
+
+
+
+
+
+
+
+
 
 
 
