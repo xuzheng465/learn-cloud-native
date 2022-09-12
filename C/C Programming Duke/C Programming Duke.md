@@ -10,7 +10,7 @@
 
 ### struct
 
-<img src="../assets/struct1.jpg" alt="struct1" width="700px" />
+<img src="../../assets/struct1.jpg" alt="struct1" width="700px" />
 
 ```c
 // option 1
