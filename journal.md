@@ -14,3 +14,28 @@ learn some make
 
 09-13
 
+```sh
+$ find /usr/src/usr.bin -name '*.[ch]' -exec cat {} \; | wc -l
+```
+
+singals notify a process that a condition has occurred. Signals maybe:
+
+* allowed to cause the default action
+* intentionallly and explicityly ignored
+* caught and control transfered to a user-defined function
+
+
+
+
+
+Protobuf lets you define how you want your data structured, compile your protobuf into code in potentially many languages, and then read and write your structured data to and from different data streams.
+
+toreview 
+
+优雅退出Goroutine
+
+
+
+learn some go
+
+[100gomistakes](/Users/xuzheng/Projects/notes2/CloudNative/Go/100-go-mistakes.md) 

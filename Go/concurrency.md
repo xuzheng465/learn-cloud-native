@@ -1,4 +1,4 @@
-Go Concurrency Patterns: Pipelines and cancellation
+#### Go Concurrency Patterns: Pipelines and cancellation
 
 
 
