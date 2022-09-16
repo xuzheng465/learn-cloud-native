@@ -39,3 +39,14 @@ toreview
 learn some go
 
 [100gomistakes](/Users/xuzheng/Projects/notes2/CloudNative/Go/100-go-mistakes.md) 
+
+
+
+09-15
+
+[vscode C/C++ format configuration](https://stackoverflow.com/questions/46111834/format-curly-braces-on-same-line-in-c-vscode)
+
+Search for C_Cpp.clang_format_fallbackStyle
+
+
+
